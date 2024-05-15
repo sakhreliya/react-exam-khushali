@@ -1,9 +1,9 @@
 import { call, put } from "redux-saga/effects"
 import { DELETE_PRODUCT_ERROR, 
-  DELETE_PRODUCT_SUCCESS, GET_PRODUCT_ERROR, GET_PRODUCT_SUCCESS,} from "../../Product/action/action";
-import { DeleteProduct,  getProduct } from "../../Product/api/api";
+  DELETE_PRODUCT_SUCCESS, GET_PRODUCT_ERROR, GET_PRODUCT_SUCCESS} from "../../Product/action/action";
+import { DeleteProduct,  getProduct  } from "../../Product/api/api";
 
-// get data respons manage 
+// get data  
 export function* HandleGetProduct(action) {
   try {
     const res = yield call(getProduct, action)
@@ -19,7 +19,7 @@ export function* HandleGetProduct(action) {
   }
 }
  
-// Delete data respons manage 
+// Delete data 
 export function* HandleDeleteProduct(action) {
   try {
     const res = yield call(DeleteProduct, action)
@@ -34,3 +34,4 @@ export function* HandleDeleteProduct(action) {
     yield put({ type: DELETE_PRODUCT_ERROR, error })
   }
 }
+

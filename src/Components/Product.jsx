@@ -21,29 +21,44 @@ function Product() {
   );
 
   return (
-    <div className='product-container'>
-      <div className='filter-container'>
-        <label htmlFor="filter">Product name Filter: </label>
-        <input
-          type="text"
-          id="filter"
-          placeholder='Enter Product'
-          value={filter}
-          className='input_text'
-          onChange={(e) => setFilter(e.target.value)}
-        />
-      </div>
-      <div className='product-list'>
-        {filteredProducts.map((item, index) => (
-          <div className='product-card' key={index} >
-            <h4>{item.product_name}</h4>
-            <h5>{item.price}</h5>
-            <h5>{item.desc}</h5>
-            <button onClick={() => handleDelete(item.id)}>delete</button>
-          </div>
-        ))}
-      </div>
+    
+  <div className='container product-container'>
+  <div className='filter-container'>
+    <div>
+      <label htmlFor="filter">Product name Filter:</label>
+      <input
+        type="text"
+        id="filter"
+        placeholder='Enter Product'
+        value={filter}
+        className='form-control input_text'
+        onChange={(e) => setFilter(e.target.value)}
+      />
     </div>
+  </div>
+  <table className='table table-striped'>
+    <thead>
+      <tr>
+        <th>Product Name</th>
+        <th>Price</th>
+        <th>Description</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      {filteredProducts.map((product, index) => (
+        <tr key={index}>
+          <td>{product.product_name}</td>
+          <td>{product.price}</td>
+          <td>{product.desc}</td>
+          <td>
+            <button className='btn btn-primary' onClick={() => handleDelete(product.id)}>Delete</button>
+          </td>
+        </tr>
+      ))}
+    </tbody>
+  </table>
+</div>
   );
 }
 

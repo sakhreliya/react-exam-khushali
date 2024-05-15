@@ -16,11 +16,15 @@ const initialState = {
   DeleteProductError: null,
 
   ProductIsLoaded: false,
+
+
 };
 
 function ProductReducer(state = initialState, action) {
   console.log(action);
   switch (action.type) {
+
+    // get
     case GET_PRODUCT_PROGRESS:
       return {
         ...state,
@@ -38,7 +42,7 @@ function ProductReducer(state = initialState, action) {
         Product: action.data,
       };
 
-    // Delete Product Actions
+    // Delete
     case DELETE_PRODUCT_PROGRESS:
       return {
         ...state,
@@ -51,9 +55,11 @@ function ProductReducer(state = initialState, action) {
       };
     case DELETE_PRODUCT_SUCCESS:
       return {
-        ...state, 
+        ...state,
         Product: state.Product.filter((product) => product.id !== action.data),
       };
+
+
 
     default:
       return state;
